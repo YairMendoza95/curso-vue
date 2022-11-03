@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- Para poder hacer uso de eventos se necesita utilizar la directiva v-on o en su defecto se puede utilizar el simbole @ -->
+        <button v-on:mouseEnter="sumarUno">Sumar</button>
+        <button @click="restarUno">Restar</button>
+        <hr/>
+        {{contador}}
+        <hr />
+        <!-- 
+            Para enviar parametros a las funciones se hace de manera convencional, en caso de que la función no tenga parametros solo se encribe el nombre de la función, caso contrario entre parentesis se envian estos
+        -->
+        <button v-on:click="alerta('Advertencia')">Mostrar alerta</button>
+        <hr />
+
+        <!-- Uso del objeto Event 
+            Se pueden enviar más de un evento en el mismo elemento para ello solo se declaran en las propiedades
+        -->
+        <div style="height: 150px;" v-on:mousemove="mostrarUbicacion" v-on:click="sumar(3)">
+        </div>
+        x: {{x}}, y: {{y}} - Contador: {{contador}}
+
+        <hr/>
+        <!-- Modificadores de eventos
+            Los modificadores de eventos funcionan para cambiar el comportamiento de las funciones
+
+            .once: Hace que un evento solo se ejecute una vez
+            .stop: detiene un evento
+        -->
+        <div style="height: 150px; border: 1px solid blue;" v-on:mousemove="mostrarUbicacion" v-on:click.once="sumar(3)">
+            <div style="height: 50px; border: 1px solid red;" v-on:mousemove.stop></div>
+        </div>
+        x: {{x}}, y: {{y}} - Contador: {{contador}}
+        <hr/>
+
+        <!-- Eventos de teclado -->
+        <input type="text" v-on:keyup="sumar(2)" v-on:keyup.delete="restar(2)">
+        Contador: {{contador}}
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>

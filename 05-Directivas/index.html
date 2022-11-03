@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directivas</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 
+            ====== v-bind ======
+            En cualquier caso Vue tiene una manera corta de hacer bind y es usando unicamente los dos puntos
+            v-bind:src === :src
+        -->
+        <img :src="src" alt="">
+        
+        <!-- 
+            ====== v-text ====== 
+            Esta directiva te permite mostrar un texto dentro de un elemento funciona de la misma manera que la interpolación
+        -->
+        <div v-text="saludo"></div>
+
+        <!-- 
+            ====== v-html ====== 
+            Permite mostrar etiquetas HTML definidas en el objeto data de vue
+        -->
+        <div v-html="etiqueta"></div>
+
+        <!-- 
+            ====== v-if, v-else y v-else-if ====== 
+            Esta directiva te permite mostrar un texto dentro de un elemento funciona de la misma manera que la interpolación
+        -->
+        <div v-if="parrafo == 1">Este es el primer div</div>
+        <div v-else-if="parrafo == 2">Este es el segundo div</div>
+        <div v-else>Este es el tercer div</div>
+
+        <!-- 
+            ====== v-show ====== 
+            La directiva v-show muestra u oculta elementos del DOM siempre que se cumplar una condición
+        -->
+        <div v-show="mostrar">Este es el cuarto div</div>
+
+        <!-- 
+            ====== v-for ====== 
+            Se utiliza para bucles
+        -->
+        <div>
+            <ul>
+                <!-- El uso de la etiqueta template permite agrupar una sección del DOM -->
+                <template v-for="(pais, index) in paises">
+                    <li >{{++index}} - {{pais}}</li>
+                    <hr/>
+                </template>
+            </ul>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
